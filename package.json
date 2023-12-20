@@ -1,0 +1,12 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "Algorithms in JavaScript",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Och",
+  "license": "LGPL-3.0-or-later"
+}

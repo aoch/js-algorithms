@@ -36,7 +36,49 @@ const quickSort = (arr) => {
     return [].concat(quickSort(smaller), [pivotValue], quickSort(greater));
 };
 
+const mergeSort = (arr) => {
+    return !Array.isArray(arr) ? [] : _mergeSort(arr, [...arr], 0, arr.length);
+};
+
+const _mergeSort = (arr, result, start, end) => {
+
+    if (end - start < 2)
+        return result;
+
+    if (end - start === 2) {
+        if (result[start] > result[start + 1]) {
+            let tempValue = result[start];
+            result[start] = result[start + 1];
+            result[start + 1] = tempValue;
+        }
+        return result;
+    }
+
+    const middle = Math.floor((start + end) / 2);
+
+    _mergeSort(result, arr, start, middle);
+    _mergeSort(result, arr, middle, end);
+
+    let i = start;
+    let j = middle;
+    let idx = start;
+
+    while (idx < end) {
+        if (j >= end || (i < middle && arr[i] < arr[j])) {
+            result[idx] = arr[i];
+            i++;
+        } else {
+            result[idx] = arr[j];
+            j++;
+        }
+        idx++;
+    }
+
+    return result;
+};
+
 export {
     insertionSort,
-    quickSort
+    quickSort,
+    mergeSort
 };
